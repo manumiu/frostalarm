@@ -3,7 +3,7 @@
 // the function which handles the input field logic
 function printLocation() {
 
-    //Abfrage der Daten, die von meinem Webserver ausgegeben werden
+    //Get Data from my webserver
     var xhr = new XMLHttpRequest();
     var locationInput = document.getElementById('location').value;
 
@@ -47,12 +47,6 @@ function reqListener () {
     var lowestTemp = Math.min.apply(Math, forecast24);
     console.log(lowestTemp);
 
-    //find paragraph with ID "WeatherResult" to print out the temperature data in it
-    //var owmResult = document.getElementById('weatherResultTemp');
-
-    // print out next 24 temperature values in "weatherResult"
-    //owmResult.textContent = "Erwartetes Temperatur-Minimum der nächsten 24 Stunden: "+lowestTempString+"°C ";
-
     //get element to print out statement about min temperature
     var minResult = document.getElementById('weatherResultText');
 
@@ -67,11 +61,11 @@ function reqListener () {
       minResult.textContent = "Alles fein. Heute Nacht wird es voraussichtlich nicht kälter als "+lowestTemp+" Grad."
     }
 
-    var lowestTempString = JSON.stringify(lowestTemp);
+    //var lowestTempString = JSON.stringify(lowestTemp);
 
 }
 
-//generic function to retrieve keys in JSON data
+//generic function to retrieve keys in JSON data // used for old Open Weather Map solution:
 function getValues(obj, key) {
     var objects = [];
     for (var i in obj) {
@@ -85,7 +79,7 @@ function getValues(obj, key) {
     return objects;
 }
 
-//diese Funktion printet aktuell die Nutzereingabe aus, soll zukünftig die Nutzereingabe an den Server schicken
+//print out User Input for debugging and demonstration
 function printLocationHelper () {
     //print out users input of location in paragraph "locationResult"
     var locationInput = document.getElementById('location').value;
@@ -95,14 +89,12 @@ function printLocationHelper () {
     //print out locationInput in console
     console.log(locationInput);
 }
-//TODO: "name" der location mit ausgeben
-//id for Berlin Pankow is 2855598
+//TODO: Display address from Google GeoCoding
 
-
-//use eventlistener for click on LocationButton
+//eventlistener for click on LocationButton
 var locationButton = document.getElementById('locationButton');
 locationButton.addEventListener('click', printLocationHelper, false);
 
-// use an eventlistener for click on forecastButton
+//eventlistener for click on forecastButton
 var forecastButton = document.getElementById('forecastButton');
 forecastButton.addEventListener('click', printLocation, false);

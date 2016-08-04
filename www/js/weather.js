@@ -2,14 +2,9 @@
 
 // the function which handles the input field logic
 function printLocation() {
-
-    //Get Data from my webserver
     var xhr = new XMLHttpRequest();
+    //get user input
     var locationInput = document.getElementById('location').value;
-
-    //Save location
-    localStorage.setItem("location", locationInput);
-    console.log(localStorage.getItem("location"));
 
     //URL and attached user input
     var url = 'http://querbeetberlin.de:8080/'+locationInput;
@@ -18,12 +13,14 @@ function printLocation() {
     xhr.open("GET", url, true);
     xhr.setRequestHeader('Content-Type', 'text/plain');
     xhr.send();
+    //Save location
+    localStorage.setItem("location", locationInput);
+    console.log(localStorage.getItem("location"));
 }
 
-//TODO: #14: Fallunterscheidung, je nachdem ob Wert in localStorage gespeichert ist oder nicht.
+//TODO: #14: Care for two cases: localStorage is full, localStorage is empty.
 
-
-//diese Funktion gibt die Temperatur für die kommenden 24h aus.
+//get forecast for next 24 hours and find out the minimum temperature
 function reqListener () {
     //print out server response in console
     //console.log(this.responseText);
@@ -60,9 +57,6 @@ function reqListener () {
     } else {
       minResult.textContent = "Alles fein. Heute Nacht wird es voraussichtlich nicht kälter als "+lowestTemp+" Grad."
     }
-
-    //var lowestTempString = JSON.stringify(lowestTemp);
-
 }
 
 //generic function to retrieve keys in JSON data // used for old Open Weather Map solution:

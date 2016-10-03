@@ -39,15 +39,21 @@ function handleRequest(req, res){
             const urlForecast = "https://api.forecast.io/forecast/4c631760f02a147c4eafe608562e327c/"+lat+","+lng+"?units=si&exclude=[currently,daily]"
             console.log(urlForecast);
 
-            // get forcast for specified latitude and longitude
             request(urlForecast, function (error, response, body) {
                 if (!error && response.statusCode == 200) {
                     res.writeHead(response.statusCode, {"Content-Type": "application/json"});
-                    res.write(body);
-                    // TODO: add adress to response
+                    //Save body in variable, so I can attach address in JSON data
+                    var bodyToWorkWith = JSON.parse(body);
+                    console.log(bodyToWorkWith);
+                    //attach address from google to JSON object
+                    bodyToWorkWith["addressFromGoogle"] = address;
+                    var enhancedBody = JSON.stringify(bodyToWorkWith);
+                    console.log(enhancedBody);
+                    
+                    res.write(enhancedBody);
                     res.end();
                     console.log("Wetterdaten angekommen");
-                // if statusCode from forecast.io ist not 200:
+                // if statusCode ist not 200:
                 } else {
                     res.writeHead(response.statusCode);
                     res.write(error);
@@ -55,7 +61,6 @@ function handleRequest(req, res){
                 }
             });
 
-        //if status code from google geocoding is not 200
         } else {
             res.writeHead(response.statusCode);
             res.write(error);

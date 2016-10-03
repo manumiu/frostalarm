@@ -44,35 +44,43 @@
 
 <body>
     <div class="app">
-        <h1>Frost Alarm</h1>
+      <div class="intro">
+        <h2>Lass dich warnen, wenn es für <br />deine Pflanzen zu kalt wird.</h2>
+      </div>
         <div id="deviceready" class="blink">
             <p class="event listening">Connecting to Device</p>
             <p class="event received"></p>
         </div>
 
+
         <div class='locationInput'>
             <form id='nameForm'>
                 <div class='form-uname'>
-                    <label id='nameLabel' for='location'>Standort festlegen:</label>
-                    <input id='location' type='text' maxlength='25'></input>
+                    <label id='locationLabel' for='location'>Wo stehen deine Pflanzen?</label>
+                    <input id='locationInputField' type='text' maxlength='25' placeholder="PLZ eingeben"></input>
                 </div>
-                <div class='form-submit'>
-                    <button id="locationButton" type='button'>Standort ausgeben</button>
-                </div>
+                <!--<div class='form-submit'>
+                  <button id="locationButton" type='button'>Standort ausgeben</button>
+                </div>-->
+
                 <div>
                     <p id='locationResult'></p>
                 </div>
             </form>
+        </div>
 
-        </div>
+
+
         <div class='form-submit'>
-            <button id='forecastButton' type='button'>Get forecast</button>
+            <button id='forecastButton' type='button'>Ab damit!</button>
         </div>
-        <div>
-            <p id="weatherResultTemp"></p>
+
+        <div id="address">
+            <p id="addressAccordingToLatLng"></p>
         </div>
-        <div>
-            <p id="weatherResultText"></p>
+
+        <div id="forecast">
+            <p id="forecastText"></p>
         </div>
     </div>
 
@@ -83,5 +91,4 @@
         app.initialize();
     </script>
 </body>
-
 </html>

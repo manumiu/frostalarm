@@ -47,15 +47,15 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/frost_leaves.png) no-repeat center top; /* 250px x 140px */
+    background:url(../img/frost-leaves-1280x720.png) no-repeat center top;
     position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height: 140px;                   /* text area height */
-    width: 250px;                   /* text area width */
+    left:0%;
+    top:0%;
+    height: 538px;                   /* text area height */
+    width: 360px;                   /* text area width */
     text-align:center;
-    padding:145px 0px 0px 0px;     /* image height is 140px (bottom 20px are overlapped with text) */
-    margin:-140px 0px 0px -125px;  /* offset vertical: half of image height and text area height */
+    padding:30px 0px 0px 0px;     /* image height is 140px (bottom 20px are overlapped with text) */
+    margin:0px 0px 0px 0px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
 }
 
@@ -69,13 +69,64 @@ body {
     }
 }
 
-h1 {
-    font-size:24px;
+h2 {
+    font-size:18px;
     font-weight:normal;
-    margin:0px;
-    overflow:visible;
-    padding:0px;
-    text-align:center;
+    text-align: center;
+    font-style: italic;
+}
+
+.intro {
+  background-color: white;
+  width: 340px;
+  height:65px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  padding: 1px 0px 2px 0px;
+}
+
+#locationLabel {
+  font-size: 18px;
+  background-color: white;
+  padding: 5px;
+  width: 330px;
+  font-weight: bold;
+  float: left;
+}
+
+#locationInputField {
+  margin: 10px 20px 20px 20px;
+  font-size: 18px;
+  text-align: center;
+
+}
+
+#locationInputField:focus::-webkit-input-placeholder {
+  color:transparent;
+}
+
+#forecastButton {
+  background-color: white;
+  border: none;
+  font-size: 18px;
+}
+
+#address{
+  background-color:white;
+  width: 340px;
+  margin:10px;
+  padding-top:2px;
+  padding-bottom:2px;
+  font-size: 18px;
+}
+
+#forecast{
+  background-color:white;
+  width: 340px;
+  margin:10px;
+  padding-top:2px;
+  padding-bottom:2px;
+  font-size: 18px;
 }
 
 .event {
@@ -93,7 +144,7 @@ h1 {
 }
 
 .event.received {
-    background-color: #27527f;
+
     display:none;
 }
 
@@ -102,7 +153,7 @@ h1 {
     50% { opacity: 0.4; }
     to { opacity: 1.0; }
 }
- 
+
 @-webkit-keyframes fade {
     from { opacity: 1.0; }
     50% { opacity: 0.4; }

@@ -4,6 +4,7 @@
     <description>Hello World sample application that responds to the deviceready event.</description>
     <author email="support@phonegap.com" href="http://phonegap.com">PhoneGap Team</author>
     <content src="index.html" />
+    <gap:plugin name="de.appplant.cordova.plugin.local-notification" />
     <icon src="icon.png" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

@@ -94,6 +94,38 @@ function printLocationHelper () {
     //print out locationInput in console
     console.log(locationInput);
 }
+
+
+
+document.addEventListener('deviceready', function () {
+    let now = new Date().getTime();
+    let tenSecFromNow = new Date(now + 10*1000);
+    // Do something ten seconds after app is ready
+    cordova.plugins.notification.local.schedule({
+        id: 10,
+        title: "Frost Alarm",
+        text: "Überprüft Wettervorhersage :)",
+        at: tenSecFromNow
+    });
+
+    // do nothing when notification is clicked
+    cordova.plugins.notification.local.on("click", function (notification) {
+        if (notification.id === 10) {
+        }
+    });
+
+    // Notification has reached its trigger time (Tomorrow at 8:45 AM)
+    cordova.plugins.notification.local.on("trigger", function (notification) {
+        if (notification.id !== 10) {
+            return;
+        }
+        
+        cordova.plugins.notification.local.update({
+            id: 10,
+            title: "Meeting in 5 minutes!"
+        });
+    });
+}, false);
 //TODO: Display address from Google GeoCoding
 
 //eventlistener for click on LocationButton
